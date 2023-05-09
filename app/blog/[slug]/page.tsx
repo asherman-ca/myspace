@@ -1,17 +1,18 @@
 // forces refetch on each request
-export const dynamic = 'force-dynamic'
+// export const dynamic = 'force-dynamic'
+// export const dynamic = 'force-static'
 
 // forces refetch on interval (incremental static regeneration - dynamic)
-// export const revalidate = 420
-// export async function generateStaticParams() {
-// 	const posts: Post[] = await fetch('http://localhost:3000/api/content').then(
-// 		(res) => res.json()
-// 	)
+export const revalidate = 420
+export async function generateStaticParams() {
+	const posts: Post[] = await fetch('http://localhost:3000/api/content').then(
+		(res) => res.json()
+	)
 
-// 	return posts.map((post) => ({
-// 		slug: post.slug,
-// 	}))
-// }
+	return posts.map((post) => ({
+		slug: post.slug,
+	}))
+}
 
 type Post = {
 	title: string
@@ -25,9 +26,9 @@ type Props = {
 
 const page = async ({ params }: Props) => {
 	// also forces refetch on each request
-	const posts: Post[] = await fetch('http://localhost:3000/api/content', {
-		cache: 'no-store',
-	}).then((res) => res.json())
+	const posts: Post[] = await fetch('http://localhost:3000/api/content').then(
+		(res) => res.json()
+	)
 	const post = posts.find((post) => post.slug === params.slug)!
 
 	return (
