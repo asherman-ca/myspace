@@ -1,4 +1,6 @@
+import { getServerSession } from 'next-auth'
 import { NextResponse } from 'next/server'
+import { authOptions } from '../auth/[...nextauth]/route'
 
 const posts = [
 	{
@@ -34,5 +36,9 @@ const posts = [
 ]
 
 export async function GET() {
+	const session = await getServerSession()
+
+	console.log('server SESH', session)
+
 	return NextResponse.json(posts)
 }

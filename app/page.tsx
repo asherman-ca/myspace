@@ -1,12 +1,14 @@
-'use client'
 import Image from 'next/image'
-import { signIn } from 'next-auth/react'
+import { getServerSession } from 'next-auth'
+import { redirect } from 'next/navigation'
 
-export default function Home() {
-	return (
-		<main>
-			main
-			<div onClick={() => signIn('github')}>signin</div>
-		</main>
-	)
+export default async function Home() {
+	const session = await getServerSession()
+	console.log('seshun', session)
+
+	if (!session) {
+		redirect('/about')
+	}
+
+	return <main>main</main>
 }
