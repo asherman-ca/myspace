@@ -1,6 +1,7 @@
 import { Metadata } from 'next'
 import { prisma } from '@/app/lib/prisma'
 import Image from 'next/image'
+import FollowButton from '@/app/components/FollowButton/FollowButton'
 
 type Props = {
 	params: {
@@ -26,6 +27,8 @@ const page = async ({ params }: Props) => {
 			<h1>{name}</h1>
 			<Image src={image!} alt={name!} width={200} height={200} />
 			<p>{bio}</p>
+			{/* @ts-ignore */}
+			<FollowButton targetUserId={params.id} />
 		</div>
 	)
 }

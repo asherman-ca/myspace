@@ -22,6 +22,7 @@ const page = async () => {
 	return (
 		<>
 			<h1>Dashboard</h1>
+			<SignOutButton />
 			<ProfileForm user={user} />
 		</>
 	)
