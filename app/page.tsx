@@ -4,7 +4,6 @@ import { redirect } from 'next/navigation'
 
 export default async function Home() {
 	const session = await getServerSession()
-	console.log('seshun', session)
 
 	if (!session) {
 		redirect('/about')

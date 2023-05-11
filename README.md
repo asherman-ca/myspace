@@ -36,3 +36,6 @@ Check out our [Next.js deployment documentation](https://nextjs.org/docs/deploym
 Prisma Command Sequence:
 npx prisma init (before any packages)
 npx prisma migrate dev (installed dev/prisma and prisma client)
+
+DB:
+neon.com
